@@ -16,6 +16,7 @@ bool d2 = false;
 bool d3 = false;
 bool d4 = false;
 
+// Tanto faz ser HIGH ou LOW, essa parte serve para que a variável não fique vaga
 bool lastBotaoD1 = HIGH;
 bool lastBotaoD2 = HIGH;
 bool lastBotaoD3 = HIGH;
@@ -37,25 +38,33 @@ void setup() {
 }
 
 void loop() {
+  // como o códico é executado de cima pra baixo, primeiro fazemos as leituras dos botoes para depois considerar como um lastBotao
+  // logo a comparação será sempre com o leituraD do loop anterior que será escrito como lastBotao antes que o loop atual o escreva como leituraD
+  // usamos ! pois estes pins estão como INPUT_PULLOUT
   bool leituraD1 = !digitalRead(botaoD1);
   bool leituraD2 = !digitalRead(botaoD2);
   bool leituraD3 = !digitalRead(botaoD3);
   bool leituraD4 = !digitalRead(botaoD4);
 
+  // por se tratar de uma porta AND o if só será verdadeiro se leituraD seja HIGH e lastBotao seja LOW ou seja: borda de subida
+  // depois de apertar o botão tornando leituraD HIGH 
   if (leituraD1 && !lastBotaoD1) d1 = !d1;
   if (leituraD2 && !lastBotaoD2) d2 = !d2;
   if (leituraD3 && !lastBotaoD3) d3 = !d3;
   if (leituraD4 && !lastBotaoD4) d4 = !d4;
 
+  // constantemente copia o estado atual do botão pra comparar com o estado seguinte
   lastBotaoD1 = leituraD1;
   lastBotaoD2 = leituraD2;
   lastBotaoD3 = leituraD3;
   lastBotaoD4 = leituraD4;
 
+  // operações de paridade
   bool p1 = (d1 ^ d2 ^ d4);
   bool p2 = (d1 ^ d3 ^ d4);
   bool p3 = (d2 ^ d3 ^ d4);
 
+  // display dos bits nos leds
   digitalWrite(ledP1, p1);
   digitalWrite(ledP2, p2);
   digitalWrite(ledD1, d1);
