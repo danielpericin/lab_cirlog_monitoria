@@ -17,10 +17,10 @@ bool d3 = false;
 bool d4 = false;
 
 // Tanto faz ser HIGH ou LOW, essa parte serve para que a variável não fique vaga
-bool lastBotaoD1 = HIGH;
-bool lastBotaoD2 = HIGH;
-bool lastBotaoD3 = HIGH;
-bool lastBotaoD4 = HIGH;
+bool lastLeituraD1 = HIGH;
+bool lastLeituraD2 = HIGH;
+bool lastLeituraD3 = HIGH;
+bool lastLeituraD4 = HIGH;
 
 void setup() {
   pinMode(botaoD1, INPUT_PULLUP);
@@ -48,16 +48,16 @@ void loop() {
 
   // por se tratar de uma porta AND o if só será verdadeiro se leituraD seja HIGH e lastBotao seja LOW ou seja: borda de subida
   // depois de apertar o botão tornando leituraD HIGH 
-  if (leituraD1 && !lastBotaoD1) d1 = !d1;
-  if (leituraD2 && !lastBotaoD2) d2 = !d2;
-  if (leituraD3 && !lastBotaoD3) d3 = !d3;
-  if (leituraD4 && !lastBotaoD4) d4 = !d4;
+  if (leituraD1 && !lastLeituraD1) d1 = !d1;
+  if (leituraD2 && !lastLeituraD2) d2 = !d2;
+  if (leituraD3 && !lastLeituraD3) d3 = !d3;
+  if (leituraD4 && !lastLeituraD4) d4 = !d4;
 
   // constantemente copia o estado atual do botão pra comparar com o estado seguinte
-  lastBotaoD1 = leituraD1;
-  lastBotaoD2 = leituraD2;
-  lastBotaoD3 = leituraD3;
-  lastBotaoD4 = leituraD4;
+  lastLeituraD1 = leituraD1;
+  lastLeituraD2 = leituraD2;
+  lastLeituraD3 = leituraD3;
+  lastLeituraD4 = leituraD4;
 
   // operações de paridade
   bool p1 = (d1 ^ d2 ^ d4);
