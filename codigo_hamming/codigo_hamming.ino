@@ -21,7 +21,7 @@ bool lastLeituraD1 = HIGH;
 bool lastLeituraD2 = HIGH;
 bool lastLeituraD3 = HIGH;
 bool lastLeituraD4 = HIGH;
-
+  
 void setup() {
   pinMode(botaoD1, INPUT_PULLUP);
   pinMode(botaoD2, INPUT_PULLUP);
