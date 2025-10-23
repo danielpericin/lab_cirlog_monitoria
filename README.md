@@ -1,4 +1,4 @@
-# Arquivos de Laboratório de CIrcuitos Lógicos - UFRJ
+# Arquivos de Laboratório de Circuitos Lógicos - UFRJ
 ## Códigos em C++ para Arduino
 
 - Introdução a programação de microcontroladores com framework Arduino
